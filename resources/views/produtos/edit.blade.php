@@ -6,6 +6,7 @@
     @include('layout.message-success-error')
 
     <form method="POST" action="{{ route('produtos.update', $produto->id) }}">
+        <input type="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
 
         @include('produtos._form')

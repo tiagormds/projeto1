@@ -66,4 +66,41 @@ class ProdutoController extends Controller
         }
 
     }
+
+    public function update(Request $request, $id){
+
+        $produto = Produtos::find($id);
+
+        $msgm = [
+
+            'sku.required' => 'O SKU é obrigatório',
+            'sku.min' => 'O SKU tem que ter no mínimo 3 caracteres',
+
+            'titulo.required' => 'O titulo é obrigatório',
+            'titulo.min' => 'O titulo tem que ter no mínimo 3 caracteres',
+
+            'descricao.required' => 'A descrição é obrigatório',
+            'descricao.min' => 'A descrição tem que ter no mínimo 10 caracteres',
+
+            'preco.required' => 'O preço é obrigatório',
+            'preco.numeric' => 'O campo preço é só números',
+        ];
+
+        $this->validate($request,[
+            'sku'       =>  'required|min:3',
+            'titulo'    =>  'required|min:3',
+            'descricao' =>  'required|min:10',
+            'preco'     =>  'required|numeric|',
+        ], $msgm);
+
+        $produto->sku = $request->get('sku');
+        $produto->titulo = $request->get('titulo');
+        $produto->descricao = $request->get('descricao');
+        $produto->preco = $request->get('preco');
+
+        if($produto->update()){
+            return redirect()->back()->with('success', 'Produto Atualizado com sucesso!');
+        }
+
+    }
 }
