@@ -19,13 +19,40 @@ class ProdutoController extends Controller
         return view('produtos.show', compact( 'produto'));
     }
 
+    public function edit($id){
+        $produto = Produtos::find($id);
+
+        return view('produtos.edit', compact( 'id', 'produto'));
+    }
+
     public function create(){
         return view('produtos.create');
     }
 
     public function store(Request $request){
 
+        $msgm = [
 
+            'sku.required' => 'O SKU é obrigatório',
+            'sku.unique' => 'Esse SKU já está cadastrado',
+            'sku.min' => 'O SKU tem que ter no mínimo 3 caracteres',
+
+            'titulo.required' => 'O titulo é obrigatório',
+            'titulo.min' => 'O titulo tem que ter no mínimo 3 caracteres',
+
+            'descricao.required' => 'A descrição é obrigatório',
+            'descricao.min' => 'A descrição tem que ter no mínimo 10 caracteres',
+
+            'preco.required' => 'O preço é obrigatório',
+            'preco.numeric' => 'O campo preço é só números',
+        ];
+
+        $this->validate($request,[
+            'sku'       =>  'required|unique:produtos|min:3',
+            'titulo'    =>  'required|min:3',
+            'descricao' =>  'required|min:10',
+            'preco'     =>  'required|numeric|',
+        ], $msgm);
 
         $produto = new Produtos();
 
