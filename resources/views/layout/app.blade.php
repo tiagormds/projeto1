@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="container">
+        @include('layout.message-success-error')
         @yield('content')
     </div>
 

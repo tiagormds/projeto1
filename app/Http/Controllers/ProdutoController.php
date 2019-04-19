@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProdutoController extends Controller
 {
     public function index(){
-        $produtos = Produtos::all();
+        $produtos = Produtos::paginate(4);
 
         return view('produtos.index', compact('produtos'));
     }
@@ -108,5 +108,27 @@ class ProdutoController extends Controller
             return redirect()->back()->with('success', 'Produto Atualizado com sucesso!');
         }
 
+    }
+
+    public function destroy($id){
+        $produto = Produtos::find($id);
+
+        if($produto->delete()){
+            if(file_exists("./img/produtos/".md5($produto->id).".jpg")){
+                unlink("./img/produtos/".md5($produto->id).".jpg");
+            }
+
+            return redirect()->back()->with('success', 'Produto deletado com sucesso!');
+        }
+
+    }
+
+    public function busca(Request $request){
+
+        $buscaInput = $request->input('busca');
+
+
+        $produtos = Produtos::where('titulo', 'LIKE', '%'.$buscaInput.'%')->paginate(4);
+        return view('produtos.index', compact('produtos'));
     }
 }
