@@ -2,6 +2,7 @@
 @section('title', 'Lista de Produtos')
 @section('content')
     <h1>Produtos</h1>
+    <span><a style="float: right" href="{{ route('login.logout') }}">Sair</a></span><br/>
 
     @include('layout.campoDeBusca')
 
