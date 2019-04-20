@@ -12,3 +12,19 @@
         </form>
     </div>
 </div>
+
+
+
+
+{{--<form class="form-inline" action="{{ route('produtos.busca') }}" method="post">--}}
+{{--    {{ csrf_field() }}--}}
+
+
+{{--    <input class="form-control mr-sm-2" type="search" name="buscar" id="busca" placeholder="Buscar" value="@if(isset($busca)) {{ $busca }} @endif">--}}
+{{--    <button class="btn btn-outline-success my-2 my-sm-0">Buscar</button>--}}
+{{--</form>--}}
+
+{{--<form class="form-inline">--}}
+{{--    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--}}
+{{--    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--}}
+{{--</form>--}}

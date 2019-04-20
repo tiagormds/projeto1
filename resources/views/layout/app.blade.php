@@ -9,11 +9,26 @@
     <title>Nosso Site - @yield('title')</title>
 </head>
 <body>
-    <div class="container">
-        @include('layout.message-success-error')
-        @yield('content')
-    </div>
+@if(auth()->check())
+<nav class="navbar navbar-light bg-light justify-content-between">
+    <ul class="nav">
+        <li class="nav-item"><a class="navbar-brand">@yield('title')</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('produtos.create') }}">Adicionar Produto</a></li>
+    </ul>
 
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <ul class="nav justify-content-end">
+        <li class="nav-item"><a class="nav-link" href="{{ route('login.logout') }}">Sair</a></li>
+    </ul>
+</nav>
+<br/>
+@endif
+
+
+<div class="container">
+    @include('layout.message-success-error')
+    @yield('content')
+</div>
+
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>

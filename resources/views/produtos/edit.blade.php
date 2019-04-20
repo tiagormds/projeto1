@@ -1,9 +1,9 @@
 @extends('layout.app')
 @section('title', 'Editar produto - '.$produto->titulo)
 @section('content')
-    <h1 class="mb-3">Atualizar Produto - {{ $produto->titulo }}</h1>
+    {{--    <h1 class="mb-3">Atualizar Produto - {{ $produto->titulo }}</h1>--}}
 
-{{--    @include('layout.message-success-error')--}}
+    {{--    @include('layout.message-success-error')--}}
 
     <form method="POST" action="{{ route('produtos.update', $produto->id) }}" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT">
@@ -18,5 +18,7 @@
 
         <button type="submit" class="btn btn-primary">Atualizar Produto</button>
     </form>
+    <br/>
+    <a href="javascript:history.go(-1)">Voltar</a>
 
 @endsection

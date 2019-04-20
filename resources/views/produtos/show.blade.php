@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('title', $produto->titulo)
 @section('content')
-    <h1>{{ $produto->titulo }}</h1>
+{{--    <h1>{{ $produto->titulo }}</h1>--}}
 
     <div class="row">
         @if(file_exists("./img/produtos/".md5($produto->id).".jpg"))

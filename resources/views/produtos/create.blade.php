@@ -1,9 +1,9 @@
 @extends('layout.app')
-@section('title', 'Adicionar produto')
+@section('title', 'Formulário de Adicionar produto')
 @section('content')
-    <h1 class="mb-3">Adicionar um novo Produto</h1>
+    {{--    <h1 class="mb-3">Adicionar um novo Produto</h1>--}}
 
-{{--    @include('layout.message-success-error')--}}
+    {{--    @include('layout.message-success-error')--}}
 
     <form method="POST" action="{{ route('produtos.store') }}">
         {{ csrf_field() }}
@@ -12,5 +12,7 @@
 
         <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
     </form>
+    <br/>
+    <a href="javascript:history.go(-1)">Voltar</a>
 
 @endsection
