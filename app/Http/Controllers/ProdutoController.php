@@ -127,7 +127,6 @@ class ProdutoController extends Controller
 
         $buscaInput = $request->input('busca');
 
-
         $produtos = Produtos::where('titulo', 'LIKE', '%'.$buscaInput.'%')->paginate(4);
         return view('produtos.index', compact('produtos'));
     }
