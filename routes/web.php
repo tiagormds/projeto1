@@ -8,6 +8,6 @@ Route::group(['middleware'=>'auth'], function (){
     Route::resource('/produtos', 'ProdutoController');
     Route::post('/produtos/busca', 'ProdutoController@busca')->name('produtos.busca');
 
-    Route::get('/contato', 'ContatoController@index');
+    Route::get('/contato', 'ContatoController@index')->name('contato.formulario');
     Route::post('/contato/enviar', 'ContatoController@enviar')->name('contato.enviar');
 });

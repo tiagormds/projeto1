@@ -8,9 +8,9 @@
     <form method="POST" action="{{ route('contato.enviar') }}">
         {{ csrf_field() }}
 
-        @include('produtos._form')
+        @include('contato._form')
 
-        <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
     </form>
     <br/>
     <a href="javascript:history.go(-1)">Voltar</a>

@@ -14,6 +14,7 @@
     <ul class="nav">
         <li class="nav-item"><a class="navbar-brand">@yield('title')</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('produtos.create') }}">Adicionar Produto</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('contato.formulario') }}">Contato</a></li>
     </ul>
 
     <ul class="nav justify-content-end">
